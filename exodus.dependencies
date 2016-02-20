@@ -1,0 +1,18 @@
+[
+  {
+    "repository":  "cyanogenmod/kernel_oneplus_onyx",
+    "target_path": "kernel/oneplus/onyx"
+  },
+  {
+    "repository": "device_oppo_common",
+    "target_path": "device/oppo/common"
+  },
+  {
+    "repository": "cyanogenmod/external_sony_boringssl-compat",
+    "target_path": "external/sony/boringssl-compat"
+  },
+  {
+    "repository": "external_stlport",
+    "target_path": "external/stlport"
+  }
+]
