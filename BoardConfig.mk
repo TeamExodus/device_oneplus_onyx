@@ -19,6 +19,9 @@
 
 PLATFORM_PATH := device/oneplus/onyx
 
+#QCMediaPlayer
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 
