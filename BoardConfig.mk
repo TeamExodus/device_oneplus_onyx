@@ -19,6 +19,9 @@
 
 PLATFORM_PATH := device/oneplus/onyx
 
+#QCMediaPlayer
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 TARGET_NO_BOOTLOADER := true
