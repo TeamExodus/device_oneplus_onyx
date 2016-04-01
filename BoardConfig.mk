@@ -161,8 +161,6 @@ TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 
 # RIL
 TARGET_RIL_VARIANT := caf
-BOARD_PROVIDES_LIBRIL := true
-BOARD_RIL_CLASS += ../../../device/oneplus/onyx/ril
 
 # RPC
 TARGET_NO_RPC := true
@@ -187,7 +185,5 @@ TARGET_PROVIDES_WCNSS_QMI := true
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-
-TARGET_LDPRELOAD := libNimsWrap.so
 
 -include vendor/oneplus/onyx/BoardConfigVendor.mk
