@@ -16,8 +16,6 @@
 
 package com.cyanogenmod.doze.onyx;
 
-import org.cyanogenmod.internal.util.ScreenType;
-
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -26,6 +24,8 @@ import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.android.internal.util.cm.ScreenType;
 
 public class WakeUpGestureSettings extends PreferenceActivity {
 
