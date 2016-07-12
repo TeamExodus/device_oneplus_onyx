@@ -21,7 +21,7 @@ on early-init
     chown system system /sys/kernel/debug/kgsl/proc
 
 on init
-    export LD_SHIM_LIBS "/system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so:/system/lib/hw/camera.msm8974.so|libshim_camera.so"
+    export LD_SHIM_LIBS "/system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so:/system/lib/hw/camera.vendor.msm8974.so|libshim_camera.so"
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -284,9 +284,6 @@ on post-fs
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
 
-    # Create OPPO NV item directory
-    mkdir /data/oemnvitems 0771 radio radio
-
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
@@ -527,6 +524,11 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
 
+service loc_launcher /system/bin/loc_launcher
+    #loc_launcher will start as root and set its uid to gps
+    class late_start
+    group gps qcom_oncrpc inet net_raw diag qcom_diag net_admin wifi
+
 service qseecomd /system/bin/qseecomd
     class core
     user root
@@ -554,7 +556,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     group camera system inet input graphics
 
 service mpdecision /system/bin/mpdecision --avg_comp
-   class late_start
+   class main
    user root
    group system
    disabled
@@ -595,6 +597,14 @@ service hciattach /system/bin/sh /init.qcom.bt.sh
     group bluetooth net_bt_admin qcom_diag radio
     disabled
     oneshot
+
+service cnd /system/bin/cnd
+    class late_start
+    socket cnd stream 660 root inet
+
+service dpmd /system/bin/dpmd
+    class late_start
+    socket dpmd stream 660 root system
 
 on property:bluetooth.hciattach=true
     start hciattach
